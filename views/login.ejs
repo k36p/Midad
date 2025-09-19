@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/script.js"></script>
+    <script src="/js/login.js"></script>
+    <!-- header -->
+
+    <title>تسجيل الدخول</title>
+
+    <!-- style -->
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- icons lib -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/503befbdb7.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- start Navbar -->
+
+    <div class="navbar">
+        <img src="media/midad2.png" class="logos">
+        <button id="action1" onclick="test()"><svg width="30" height="25" viewBox="0 0 30 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0 2.08333C0 1.5308 0.225765 1.0009 0.627628 0.610195C1.02949 0.219494 1.57454 0 2.14286 0H27.8571C28.4255 0 28.9705 0.219494 29.3724 0.610195C29.7742 1.0009 30 1.5308 30 2.08333C30 2.63587 29.7742 3.16577 29.3724 3.55647C28.9705 3.94717 28.4255 4.16667 27.8571 4.16667H2.14286C1.57454 4.16667 1.02949 3.94717 0.627628 3.55647C0.225765 3.16577 0 2.63587 0 2.08333ZM0 12.5C0 11.9475 0.225765 11.4176 0.627628 11.0269C1.02949 10.6362 1.57454 10.4167 2.14286 10.4167H27.8571C28.4255 10.4167 28.9705 10.6362 29.3724 11.0269C29.7742 11.4176 30 11.9475 30 12.5C30 13.0525 29.7742 13.5824 29.3724 13.9731C28.9705 14.3638 28.4255 14.5833 27.8571 14.5833H2.14286C1.57454 14.5833 1.02949 14.3638 0.627628 13.9731C0.225765 13.5824 0 13.0525 0 12.5ZM0 22.9167C0 22.3641 0.225765 21.8342 0.627628 21.4435C1.02949 21.0528 1.57454 20.8333 2.14286 20.8333H27.8571C28.4255 20.8333 28.9705 21.0528 29.3724 21.4435C29.7742 21.8342 30 22.3641 30 22.9167C30 23.4692 29.7742 23.9991 29.3724 24.3898C28.9705 24.7805 28.4255 25 27.8571 25H2.14286C1.57454 25 1.02949 24.7805 0.627628 24.3898C0.225765 23.9991 0 23.4692 0 22.9167Z"
+                    fill="#A5A5A8" />
+            </svg>
+
+        </button>
+    </div>
+
+
+    <div class="sidebar">
+        <div class="contents">
+            <ul class="list-ul">
+                <li class="activeList1"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.35742 17.1113H15.1724" stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M2.67871 14.6886C2.67871 9.05759 3.29271 9.45059 6.59771 6.38559C8.04371 5.22159 10.2937 2.97559 12.2367 2.97559C14.1787 2.97559 16.4737 5.21059 17.9327 6.38559C21.2377 9.45059 21.8507 9.05759 21.8507 14.6886C21.8507 22.9756 19.8917 22.9756 12.2647 22.9756C4.63771 22.9756 2.67871 22.9756 2.67871 14.6886Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <a href="/">الرئيسية</a>
+                </li>
+                <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8743 16.6719H8.6543" stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M15.8743 12.9121H8.6543" stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M11.4093 9.15234H8.6543" stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.88867 12.9756C3.88867 19.9126 5.98667 22.2256 12.2797 22.2256C18.5737 22.2256 20.6707 19.9126 20.6707 12.9756C20.6707 6.03859 18.5737 3.72559 12.2797 3.72559C5.98667 3.72559 3.88867 6.03859 3.88867 12.9756Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <a href="/library">الكتب الجامعية</a>
+                </li>
+                <li> <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.2783 3.72559C5.34132 3.72559 3.02832 6.03859 3.02832 12.9756C3.02832 19.9126 5.34132 22.2256 12.2783 22.2256C19.2153 22.2256 21.5283 19.9126 21.5283 12.9756"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M19.8064 5.27922V5.27922C18.8134 4.40022 17.2964 4.49222 16.4174 5.48522C16.4174 5.48522 12.0484 10.4202 10.5334 12.1332C9.01636 13.8452 10.1284 16.2102 10.1284 16.2102C10.1284 16.2102 12.6324 17.0032 14.1264 15.3152C15.6214 13.6272 20.0124 8.66822 20.0124 8.66822C20.8914 7.67522 20.7984 6.15822 19.8064 5.27922Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15.2871 6.77637L18.8821 9.95937" stroke="#a5a5a8" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <a href="/edit">تعديل الملفات</a>
+                </li>
+                <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M12.2742 3.49023C7.83993 3.49023 5.91326 7.50547 5.91326 10.1598C5.91326 12.1436 6.20088 11.5598 5.10279 13.9798C3.76184 17.4283 9.15422 18.8379 12.2742 18.8379C15.3933 18.8379 20.7856 17.4283 19.4456 13.9798C18.3475 11.5598 18.6352 12.1436 18.6352 10.1598C18.6352 7.50547 16.7075 3.49023 12.2742 3.49023Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M14.5839 21.4883C13.2896 22.934 11.2705 22.9511 9.96387 21.4883" stroke="#a5a5a8"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <a href="/notifications">إشعارات هامة</a>
+                </li>
+                <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M12.2486 3.47559C5.86156 3.47559 4.78256 4.40759 4.78256 11.9046C4.78256 20.2976 4.62556 22.4756 6.22156 22.4756C7.81656 22.4756 10.4216 18.7916 12.2486 18.7916C14.0756 18.7916 16.6806 22.4756 18.2756 22.4756C19.8716 22.4756 19.7146 20.2976 19.7146 11.9046C19.7146 4.40759 18.6356 3.47559 12.2486 3.47559Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <a href="/bookMarks">قائمة المرجعيات</a>
+                </li>
+                <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.7714 13.4136C11.7714 13.4136 -0.205275 10.936 3.95667 8.53341C7.46882 6.50611 19.5728 3.02056 21.2638 3.92116C22.1644 5.61216 18.6788 17.7161 16.6515 21.2283C14.249 25.3902 11.7714 13.4136 11.7714 13.4136Z"
+                            stroke="#a5a5a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M11.7715 13.4133L21.2639 3.9209" stroke="#a5a5a8" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <a href="/contact">تواصل</a>
+                </li>
+            </ul>
+            <div class="footer-wright">
+                <p class="right">© | Enigma - 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- End navbar -->
+
+    <div class="block" onclick="hideblock()"></div>
+
+    <!-- start content -->
+    <% if(user===null) {%>
+        <div class="form-container" id="form-container">
+
+            <h4 id="formTitle"></h4>
+            <div class="gradient-background"></div>
+            <form class="modern-form login-mode" id="authForm" action="/auth/login" method="POST">
+                <div class="form-body">
+
+                    <div class="input-group username-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <circle stroke-width="1.5" stroke="currentColor" r="4" cy="8" cx="12"></circle>
+                                <path stroke-linecap="round" stroke-width="1.5" stroke="currentColor"
+                                    d="M5 20C5 17.2386 8.13401 15 12 15C15.866 15 19 17.2386 19 20"></path>
+                            </svg>
+                            <input type="text" id="username" name="username" placeholder="اسم المستخدم"
+                                class="form-input" />
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z">
+                                </path>
+                            </svg>
+                            <input id="email" name="email" required placeholder="البريد الإلكتروني" class="form-input"
+                                type="email" />
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M12 10V14M8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6Z">
+                                </path>
+                            </svg>
+                            <input id="password" required placeholder="كلمة المرور" name="password" class="form-input"
+                                type="password" />
+                            <button class="password-toggle" type="button" id="passwordToggle">
+                                <svg fill="none" viewBox="0 0 24 24" class="eye-icon">
+                                    <path stroke-width="1.5" stroke="currentColor"
+                                        d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z">
+                                    </path>
+                                    <circle stroke-width="1.5" stroke="currentColor" r="3" cy="12" cx="12"></circle>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="input-group speclization-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12s-3.5-1.57-3.5-3.5S10.07 5 12 5zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z">
+                                </path>
+                            </svg>
+                            <select id="specialization" required name="specialization" class="form-input">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group gender-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12s-3.5-1.57-3.5-3.5S10.07 5 12 5zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z">
+                                </path>
+                            </svg>
+                            <select id="gender" required name="gender" class="form-input">
+                                <option value="" disabled selected>الجنس</option>
+                                <option value="male">ذكر</option>
+                                <option value="female">أُنثى</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="submit-button" type="submit" id="submitButton">
+                        <span class="button-text">تسجيل دخول</span>
+                        <div class="button-glow"></div>
+                    </button>
+
+                    <div class="form-footer">
+                        <a class="toggle-auth-mode" href="#"><span id="toggleLinkText">إنشاء حساب جديد</span>
+                        </a>
+                    </div>
+            </form>
+
+        </div>
+        <div id="formMessage" class="etop"></div>
+        <% } else{ %>
+            <div class="alredyLogged">
+
+                <svg width="142" height="156" viewBox="0 0 142 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M26.3133 18.6047L29.5395 19.1199L32.8613 20.0573L99.0835 44.1321L101.982 45.3145L104.764 46.8156L107.409 48.6024L109.895 50.6429L112.201 52.906L114.305 55.3617L116.182 57.9802L117.811 60.7324L119.165 63.5892L120.219 66.5221L120.947 69.502L121.32 72.5L122.5 137.888L122.5 137.89L122.103 141.067L121.32 144.005L120.173 146.68L118.682 149.063L116.866 151.127L114.749 152.841L112.353 154.177L109.701 155.102L106.817 155.586L103.73 155.596L100.466 155.102L27.2985 139.5L23.7235 138.674L19.9629 137.062L16.368 134.728L13.1503 132.301L10.2116 129.529L7.59056 126.461L5.32449 123.144L3.44919 119.627L1.99886 115.959L1.00581 112.191L0.5 108.371L0.509832 104.549L6.32054 34.1422L6.78692 31.0773L7.69408 28.3119L9.00322 25.8615L10.6759 23.7401L12.6745 21.9608L14.9624 20.5357L17.5038 19.4765L20.2646 18.7943L23.2116 18.5L26.3133 18.6047ZM122.5 137.888L121.32 72.5L122.492 134.5L122.5 137.888Z"
+                        fill="url(#paint0_linear_20_113)" fill-opacity="0.5" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M20.91 12.5772L20.4436 15.6421L14.9298 91.5876L14.9199 95.4095L15.4256 99.2292L16.4188 102.998L17.8691 106.665L19.7444 110.182L22.0105 113.499L24.6315 116.568L27.5702 119.339L30.7879 121.766L34.2452 123.804L37.9018 125.408L41.7167 126.538L119.966 144.261L123.23 144.756L126.317 144.746L129.2 144.262L131.852 143.337L129.212 144.902L126.824 146.233L124.301 147.729L126.823 146.233L126.824 146.233L129.212 144.902L131.852 143.337L134.249 142.001L129.214 144.9L129.213 144.901L129.212 144.902L126.824 146.233L124.301 147.729L119.51 150.488L114.835 153.18L112.473 154.499L109.87 155.425L107.053 155.928L104.047 155.979L100.88 155.546L25.3747 139.59L21.7123 138.56L18.2109 137.074L14.9089 135.169L11.844 132.887L9.05332 130.272L6.57301 127.367L4.43803 124.218L2.68202 120.871L1.33707 117.372L0.433548 113.769L0 110.108L0.0629753 106.435L6.46608 33.029L6.96173 30.0481L7.88011 27.3474L12.5421 20.7078L14.1993 18.6064L17.6459 14.2603L21.1776 9.80676L24.7956 5.24442L23.1263 7.36147L21.8172 9.81187L20.91 12.5772Z"
+                        fill="url(#paint1_linear_20_113)" />
+                    <foreignObject x="1.91992" y="-13" width="153.08" height="170.756">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                            style="backdrop-filter:blur(6.5px);clip-path:url(#bgblur_0_20_113_clip_path);height:100%;width:100%">
+                        </div>
+                    </foreignObject>
+                    <path data-figma-bg-blur-radius="13"
+                        d="M40.3867 0.602539L43.5469 1.10645L46.8281 2.03223L115.208 25.4893L118.073 26.6582L120.802 28.1309L123.416 29.8965L125.866 31.9072L128.143 34.1426L130.216 36.5635L132.064 39.1416L133.67 41.8555L135.005 44.6719L136.04 47.5508L136.758 50.4873L137.125 53.4365L141.498 127.031L141.11 130.128L140.345 133.006L139.228 135.607L137.779 137.922L136.02 139.923L133.966 141.586L131.646 142.878L129.078 143.774L126.273 144.245L123.265 144.255L120.056 143.769L41.8301 126.051H41.8311L38.2959 125.233L34.6191 123.657L31.0684 121.352L27.8887 118.953L24.9932 116.222L22.4092 113.197L20.1719 109.922L18.3213 106.451L16.8945 102.841L15.918 99.1367L15.4199 95.373L15.4287 91.6113L20.9414 15.6914L21.3975 12.6924L22.2773 10.0088L23.5469 7.63477L25.1631 5.58398L27.0986 3.86035L29.3154 2.48047L31.7861 1.45215L34.4688 0.788086L37.3457 0.5L40.3867 0.602539Z"
+                        fill="url(#paint2_linear_20_113)" fill-opacity="0.3" stroke="url(#paint3_linear_20_113)" />
+                    <g filter="url(#filter1_d_20_113)">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M47.6944 60.3207L50.7685 57.0293L47.1248 60.9316L47.6944 60.3207ZM121.861 63.0173L80.4899 93.6688L80.4862 93.6714L79.7579 94.1218L78.9711 94.444L78.1373 94.64L77.2681 94.7121L76.3752 94.6626L75.4704 94.4939L74.5658 94.2086L73.6733 93.8093L72.8053 93.2989L71.5159 94.9607L70.2265 96.6224L71.1092 97.0135L72.0046 97.2918L72.9007 97.4547L73.7858 97.4996L74.6478 97.4244L75.4754 97.2266L76.257 96.9042L76.9814 96.4551L118.222 65.88L118.224 65.8784L121.861 63.0173ZM50.1964 57.6429L47.1248 60.9316L46.6693 61.623L46.3291 62.3837L46.1056 63.2022L46 64.0668L46.0134 64.9657L46.1469 65.8869L46.4013 66.8183L46.7776 67.7477L47.2762 68.6627L47.8977 69.551L67.0645 93.9877L67.7754 94.8007L68.5475 95.513L69.3686 96.1213L70.2265 96.6224L71.5159 94.9607L72.8053 93.2989L71.974 92.6805L71.1915 91.9571L70.4703 91.1322L51.0146 66.3508L50.3834 65.4503L49.876 64.5236L49.4921 63.583L49.2312 62.6411L49.0924 61.7101L49.0749 60.8024L49.1777 59.9299L49.3997 59.1047L49.7397 58.3385L50.1964 57.6429ZM50.1964 57.6429L50.7685 57.0293L47.1248 60.9316L50.1964 57.6429Z"
+                            fill="url(#paint4_linear_20_113)" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M121.523 54.4511L122.073 55.2382L122.53 56.0446L122.893 56.8607L123.163 57.6769L123.338 58.4834L123.418 59.2703L123.403 60.0279L123.291 60.7459L123.082 61.4143L122.774 62.0226L122.368 62.5605L121.861 63.0173L80.4889 93.6695L80.4862 93.6715L79.7579 94.1218L78.9712 94.4439L78.1373 94.64L77.2681 94.7121L76.3752 94.6626L75.4704 94.4939L74.5658 94.2086L73.6733 93.8093L72.8053 93.2989L71.974 92.6805L75.7995 77.3328L113.125 51.6584L113.725 51.3248L114.376 51.1067L115.068 51L115.791 51.0009L116.535 51.1057L117.29 51.3106L118.047 51.6121L118.796 52.0066L119.528 52.491L120.233 53.0618L120.901 53.7162L121.523 54.4511ZM49.1778 59.9296L49.3997 59.1047L49.7395 58.3389L52.2288 56.1052L55.7388 55.7462L56.6596 55.9503L57.5743 56.2642L58.4712 56.6843L59.3388 57.2072L60.1656 57.8297L60.9403 58.5485L61.6514 59.3608L75.7995 77.3328L71.974 92.6805L71.1915 91.9571L70.4703 91.1322L51.0146 66.3507L50.3833 65.4503L49.876 64.5236L49.4921 63.583L49.2311 62.6411L49.0924 61.7101L49.0749 60.8024L49.1778 59.9296ZM55.7388 55.7462L54.8234 55.6558L53.9254 55.6827L53.0564 55.8312L52.2288 56.1052L55.7388 55.7462ZM52.2288 56.1052L51.4549 56.5089L50.7686 57.0292L50.1963 57.6429L49.7395 58.3389L52.2288 56.1052Z"
+                            fill="url(#paint5_linear_20_113)" />
+                    </g>
+                    <defs>
+                        <clipPath id="bgblur_0_20_113_clip_path" transform="translate(-1.91992 13)">
+                            <path
+                                d="M40.3867 0.602539L43.5469 1.10645L46.8281 2.03223L115.208 25.4893L118.073 26.6582L120.802 28.1309L123.416 29.8965L125.866 31.9072L128.143 34.1426L130.216 36.5635L132.064 39.1416L133.67 41.8555L135.005 44.6719L136.04 47.5508L136.758 50.4873L137.125 53.4365L141.498 127.031L141.11 130.128L140.345 133.006L139.228 135.607L137.779 137.922L136.02 139.923L133.966 141.586L131.646 142.878L129.078 143.774L126.273 144.245L123.265 144.255L120.056 143.769L41.8301 126.051H41.8311L38.2959 125.233L34.6191 123.657L31.0684 121.352L27.8887 118.953L24.9932 116.222L22.4092 113.197L20.1719 109.922L18.3213 106.451L16.8945 102.841L15.918 99.1367L15.4199 95.373L15.4287 91.6113L20.9414 15.6914L21.3975 12.6924L22.2773 10.0088L23.5469 7.63477L25.1631 5.58398L27.0986 3.86035L29.3154 2.48047L31.7861 1.45215L34.4688 0.788086L37.3457 0.5L40.3867 0.602539Z" />
+                        </clipPath>
+                        <filter id="filter1_d_20_113" x="29.2947" y="46.3596" width="103.404" height="72.4856"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dx="-3.71229" dy="8.35266" />
+                            <feGaussianBlur stdDeviation="6.49651" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.103333 0 0 0 0 0.4104 0 0 0 0 0.43 0 0 0 0.25 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_20_113" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_20_113" result="shape" />
+                        </filter>
+                        <linearGradient id="paint0_linear_20_113" x1="4.03856" y1="164.204" x2="115.596" y2="28.6308"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0.320833" stop-color="#C0EEF1" />
+                            <stop offset="0.58125" stop-color="#8FC3D0" />
+                            <stop offset="0.89375" stop-color="#2A9FAF" stop-opacity="0.79" />
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_20_113" x1="-32.97" y1="25.6725" x2="123.042" y2="181.478"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#CBF3FF" />
+                            <stop offset="0.35896" stop-color="#39B8C9" />
+                            <stop offset="0.683604" stop-color="#089EB3" />
+                            <stop offset="1" stop-color="#68A4B7" />
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_20_113" x1="18.9585" y1="150.204" x2="130.516" y2="14.6309"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0.320833" stop-color="#A2F4FF" />
+                            <stop offset="0.685417" stop-color="#68D3E9" stop-opacity="0.9405" />
+                            <stop offset="0.89375" stop-color="#009BB0" stop-opacity="0.79" />
+                        </linearGradient>
+                        <linearGradient id="paint3_linear_20_113" x1="14.6911" y1="130.807" x2="138.141" y2="27.2418"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0.180663" stop-color="white" stop-opacity="0.35" />
+                            <stop offset="0.533255" stop-color="white" stop-opacity="0" />
+                        </linearGradient>
+                        <linearGradient id="paint4_linear_20_113" x1="42.4618" y1="27.2433" x2="43.3512" y2="106.724"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0.301696" stop-color="#C5E7EE" />
+                            <stop offset="0.993284" stop-color="#7FB8C0" stop-opacity="0.63" />
+                        </linearGradient>
+                        <linearGradient id="paint5_linear_20_113" x1="80.2628" y1="108.126" x2="120.303" y2="36.8471"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" />
+                            <stop offset="0.644664" stop-color="white" stop-opacity="0.57" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <p class="none">قمت بتسجيل الدخول بصفتك <a style="color: white; text-decoration: none;">
+                        <%=user.username%>
+                    </a></p>
+                <form action="/auth/logout" method="post">
+                    <button type="submit" class="NotLogged">
+                        &lang;&lang; <a style="color: white; text-decoration: none;"> تسجيل الخروج</a>
+                    </button>
+                </form>
+            </div>
+            <% } %>
+
+</body>
+<script>
+
+    /************/
+
+    const authForm = document.getElementById('authForm');
+    const formTitle = document.getElementById('formTitle');
+    const usernameGroup = document.querySelector('.username-group');
+    const usernameInput = document.getElementById('username'); // Get the username input
+    const submitButton = document.getElementById('submitButton');
+    const submitButtonText = submitButton.querySelector('.button-text');
+    const toggleAuthModeLink = document.querySelector('.toggle-auth-mode');
+    const toggleLinkText = document.getElementById('toggleLinkText');
+    const passwordInput = document.getElementById('password');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const formMessages = document.getElementById("formMessage")
+    // NEW: Get reference to the gender group
+    const genderGroup = document.querySelector('.gender-group');
+    const genderSelect = document.getElementById('gender'); // Get the gender select element
+    // reference to the specialization group and select element
+    const specializationGroup = document.querySelector('.speclization-group');
+    const specializationSelect2 = document.getElementById('specialization');
+
+    // Function to display messages (success or error)
+    function displayMessage(message, type) {
+        formMessages.innerHTML = ''; // Clear previous messages
+        const messageElement = document.createElement("p")
+
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("width", "24");
+        svg.setAttribute("height", "24");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("fill", "none");
+
+        // Create the first path element (the dot)
+        const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path1.setAttribute("d", "M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z");
+        path1.setAttribute("fill", "#991B1B");
+        svg.appendChild(path1);
+
+        // Create the second path element (the outline and the exclamation mark body)
+        const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path2.setAttribute("fill-rule", "evenodd");
+        path2.setAttribute("clip-rule", "evenodd");
+        path2.setAttribute("d", "M7.56497 2.29289C7.75251 2.10536 8.00686 2 8.27208 2L15.7279 2C15.9931 2 16.2475 2.10536 16.435 2.29289L21.7071 7.56497C21.8946 7.75251 22 8.00686 22 8.27208V15.7279C22 15.9931 21.8946 16.2475 21.7071 16.435L16.435 21.7071C16.2475 21.8946 15.9931 22 15.7279 22H8.27208C8.00686 22 7.75251 21.8946 7.56497 21.7071L2.29289 16.435C2.10536 16.2475 2 15.9931 2 15.7279L2 8.27208C2 8.00686 2.10536 7.75251 2.29289 7.56497L7.56497 2.29289ZM8.68629 4L4 8.68629L4 15.3137L8.68629 20H15.3137L20 15.3137V8.68629L15.3137 4L8.68629 4ZM12 7C12.5523 7 13 7.44772 13 8V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V8C11 7.44772 11.4477 7 12 7Z");
+        path2.setAttribute("fill", "#991B1B");
+        svg.appendChild(path2);
+
+
+        messageElement.textContent = message;
+        messageElement.style = "font-family: 'Almarai' , sans-serif;  font-weight: 900;"
+
+        if (type === 'success') {
+            messageElement.style = "color:#166534 "
+        } else if (type === 'error') {
+            messageElement.style = "color:#991b1b"
+        } else {
+            messageElement.style = "color:#1e40af"
+        }
+
+        formMessages.appendChild(svg);
+        formMessages.appendChild(messageElement);
+    }
+
+
+
+    let isLoginMode = true; // Initial state: Sign Up (Correction: It seems like your initial logic makes it login mode if action ends with /login, otherwise register. Let's align this with your existing code's interpretation. If you want "initial state: Sign Up" to be the default BEFORE the action check, then this line should be `let isLoginMode = false;`.)
+
+    // Function to toggle password visibility
+    passwordToggle.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        // يمكنك تغيير أيقونة العين هنا أيضًا
+    });
+
+    toggleAuthModeLink.addEventListener('click', (e) => {
+        e.preventDefault(); // منع السلوك الافتراضي للرابط (إعادة تحميل الصفحة)
+        isLoginMode = !isLoginMode; // تبديل الوضع
+        console.log(isLoginMode)
+        if (isLoginMode) {
+            // التحويل إلى وضع تسجيل الدخول
+            authForm.action = '/auth/login';
+            formTitle.textContent = 'تسجيل الدخول';
+            usernameGroup.style.display = 'none'; // إخفاء حقل اسم المستخدم
+            usernameInput.removeAttribute('required'); // جعل اسم المستخدم غير مطلوب لتسجيل الدخول
+            usernameInput.value = ''; // مسح حقل اسم المستخدم عند التبديل
+
+            // NEW: Hide gender field for login mode
+            genderGroup.style.display = 'none';
+            genderSelect.removeAttribute('required'); // Make gender not required for login
+            genderSelect.value = ''; // Reset gender selection
+
+            submitButtonText.textContent = 'تسجيل دخول';
+            toggleLinkText.textContent = 'إنشاء حساب جديد';
+            authForm.classList.add('login-mode'); // إضافة الفئة للنموذج لتبديل CSS
+
+            // Hide specialization field
+            specializationGroup.style.display = 'none';
+            specializationSelect2.removeAttribute('required');
+            specializationSelect2.value = '';
+
+
+        } else {
+            // التحويل إلى وضع إنشاء حساب جديد
+            authForm.action = '/auth/register';
+            formTitle.textContent = 'إنشاء حساب جديد';
+            usernameGroup.style.display = 'block'; // إظهار حقل اسم المستخدم
+            usernameInput.setAttribute('required', 'true'); // جعل اسم المستخدم مطلوبًا لإنشاء حساب
+
+            // NEW: Show gender field for register mode
+            genderGroup.style.display = 'block';
+            genderSelect.setAttribute('required', 'true'); // Make gender required for registration
+
+            submitButtonText.textContent = 'إنشاء';
+            toggleLinkText.textContent = 'تسجيل دخول';
+            authForm.classList.remove('login-mode'); // إزالة الفئة
+
+            // Show specialization field
+            specializationGroup.style.display = 'block';
+            specializationSelect.setAttribute('required', 'true');
+
+        }
+        // مسح حقلي كلمة المرور والبريد الإلكتروني عند تبديل الأوضاع للأمان/تجربة المستخدم
+        document.getElementById('email').value = '';
+        passwordInput.value = '';
+    });
+
+    // تهيئة الحالة بناءً على إجراء النموذج الأولي
+    // هذا يضمن تطابق واجهة المستخدم إذا تم تحميل الصفحة في وضع معين
+    if (authForm.action.endsWith('/auth/login')) {
+        isLoginMode = true;
+        usernameGroup.style.display = 'none';
+        usernameInput.removeAttribute('required');
+        // NEW: Hide gender field on initial load if in login mode
+        if (genderGroup) { // Check if genderGroup exists before trying to access its style
+            genderGroup.style.display = 'none';
+            genderSelect.removeAttribute('required');
+        }
+        if (specializationGroup) {
+            specializationGroup.style.display = 'none'; // Hide specialization field on initial load
+            specializationSelect2.removeAttribute('required'); // Make specialization not required for login
+            specializationSelect2.value = ''; // Reset specialization selection
+        }
+        formTitle.textContent = 'تسجيل الدخول';
+        submitButtonText.textContent = 'تسجيل دخول';
+        toggleLinkText.textContent = 'إنشاء حساب جديد';
+        authForm.classList.add('login-mode');
+    } else {
+        isLoginMode = false;
+        usernameInput.setAttribute('required', 'true'); // التأكد من أنه مطلوب لوضع إنشاء حساب افتراضي
+        // NEW: Ensure gender field is visible and required on initial load if in register mode
+        if (genderGroup) {
+            genderGroup.style.display = 'block';
+            genderSelect.setAttribute('required', 'true');
+        }
+    }
+
+    // Handle form submission via Fetch API
+    authForm.addEventListener('submit', async (e) => {
+        console.log(e)
+        e.preventDefault(); // Prevent default form submission
+
+        formMessages.innerHTML = ''; // Clear previous messages before new submission
+
+        const formData = new FormData(authForm);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        const url = authForm.action; // Get the current action URL (/auth/login or /auth/register)
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.redirected) {
+                console.log('Redirected to:', response.url);
+                window.location.href = response.url;
+                return;
+            }
+
+            const result = await response.json();
+
+            if (!response.ok) {
+
+                if (result.errors && result.errors.length > 0) {
+
+                    result.errors.forEach(error => displayMessage(error.msg, 'error'));
+                } else if (result.message) {
+
+                    displayMessage(result.message, 'error');
+                } else {
+                    displayMessage('An unexpected error occurred.', 'error');
+                }
+            } else {
+
+                if (result.message) {
+
+                    displayMessage(result.message, 'success');
+
+                } else {
+
+                    displayMessage('Operation successful!', 'success');
+                }
+
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            displayMessage('Network error or server unreachable. Please try again.', 'error');
+        }
+    });
+
+    const specializationSelect = document.getElementById('specialization');
+
+    const populateSpecializations = async (preSelectedSpecialization = '') => {
+        console.log('Fetching specializations...');
+        try {
+            // FIX: Use an absolute URL for the fetch request
+            const response = await fetch('/specializations/all');
+            console.log('Response status from /api/specializations:', response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const specializations = await response.json();
+            console.log('Fetched specializations data:', specializations);
+
+            specializationSelect.innerHTML = '<option value="" disabled selected>-- التخصص --</option>'; // Clear existing options
+            specializations.forEach(spec => {
+                console.log(spec)
+                const option = document.createElement('option');
+                option.value = spec._id;
+                option.textContent = spec.name;
+                // Pre-select if a value is provided (e.g., from error re-population)
+                if (preSelectedSpecialization === spec) {
+                    option.selected = true;
+                    console.log(`Pre-selecting specialization: ${spec.name}`);
+                }
+                specializationSelect.appendChild(option);
+            });
+            console.log('Specializations dropdown populated.');
+
+
+
+        } catch (error) {
+            console.error('Error fetching specializations:', error);
+            specializationSelect.innerHTML = '<option value="">-- Failed to load specializations --</option>';
+            displayMessage('Failed to load specialization list. Please try refreshing.', 'error');
+        }
+    };
+
+    // --- Initial setup on page load ---
+    // Fetch and populate the dropdown first
+    populateSpecializations();
+
+</script>
+
+</html>

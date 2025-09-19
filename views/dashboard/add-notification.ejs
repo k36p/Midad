@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Notification</title>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+            /* p-4 equivalent */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            /* p-8 equivalent */
+            border-radius: 0.5rem;
+            /* rounded-lg equivalent */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-xl equivalent */
+            width: 100%;
+            max-width: 28rem;
+            /* max-w-md equivalent */
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            /* text-3xl equivalent */
+            font-weight: 700;
+            /* font-bold equivalent */
+            text-align: center;
+            color: #1f2937;
+            /* text-gray-800 equivalent */
+            margin-bottom: 1.5rem;
+            /* mb-6 equivalent */
+        }
+
+        .message-box {
+            padding: 1rem;
+            /* p-4 equivalent */
+            margin-bottom: 1.5rem;
+            /* mb-6 equivalent */
+            border-radius: 0.375rem;
+            /* rounded-md equivalent */
+            border-left-width: 4px;
+            /* border-l-4 equivalent */
+        }
+
+        .message-box.success {
+            background-color: #d1fae5;
+            /* bg-green-100 equivalent */
+            border-color: #10b981;
+            /* border-green-500 equivalent */
+            color: #065f46;
+            /* text-green-700 equivalent */
+        }
+
+        .message-box.error {
+            background-color: #fee2e2;
+            /* bg-red-100 equivalent */
+            border-color: #ef4444;
+            /* border-red-500 equivalent */
+            color: #b91c1c;
+            /* text-red-700 equivalent */
+        }
+
+        .message-box p.bold {
+            font-weight: 700;
+            /* font-bold equivalent */
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            /* space-y-6 equivalent for form elements */
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            /* text-sm equivalent */
+            font-weight: 500;
+            /* font-medium equivalent */
+            color: #374151;
+            /* text-gray-700 equivalent */
+            margin-bottom: 0.25rem;
+            /* mb-1 equivalent */
+        }
+
+        textarea,
+        input[type="url"],
+        input[type="text"],
+        select {
+            /* Added select for general input styling */
+            margin-top: 0.25rem;
+            /* mt-1 equivalent */
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            /* px-3 py-2 equivalent */
+            border: 1px solid #d1d5db;
+            /* border border-gray-300 equivalent */
+            border-radius: 0.375rem;
+            /* rounded-md equivalent */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            /* shadow-sm equivalent */
+            outline: none;
+            font-size: 0.875rem;
+            /* sm:text-sm equivalent */
+        }
+
+        textarea:focus,
+        input[type="url"]:focus,
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #6366f1;
+            /* focus:border-indigo-500 equivalent */
+            box-shadow: 0 0 0 1px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.5);
+            /* focus:ring-indigo-500 equivalent */
+        }
+
+        input[type="file"] {
+            margin-top: 0.25rem;
+            /* mt-1 equivalent */
+            display: block;
+            width: 100%;
+            font-size: 0.875rem;
+            /* text-sm equivalent */
+            color: #111827;
+            /* text-gray-900 equivalent */
+            border: 1px solid #d1d5db;
+            /* border border-gray-300 equivalent */
+            border-radius: 0.5rem;
+            /* rounded-lg equivalent */
+            cursor: pointer;
+            background-color: #f9fafb;
+            /* bg-gray-50 equivalent */
+            outline: none;
+            padding: 0.5rem 0.75rem;
+            /* Added padding for better appearance */
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            margin-right: 1rem;
+            /* file:mr-4 equivalent */
+            padding: 0.5rem 1rem;
+            /* file:py-2 file:px-4 equivalent */
+            border: 0;
+            /* file:border-0 equivalent */
+            border-radius: 0.375rem;
+            /* file:rounded-md equivalent */
+            background-color: #eef2ff;
+            /* file:bg-indigo-50 equivalent */
+            color: #4338ca;
+            /* file:text-indigo-700 equivalent */
+            font-size: 0.875rem;
+            /* file:text-sm equivalent */
+            font-weight: 600;
+            /* file:font-semibold equivalent */
+            cursor: pointer;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #e0e7ff;
+            /* hover:file:bg-indigo-100 equivalent */
+        }
+
+        .file-hint {
+            margin-top: 0.25rem;
+            /* mt-1 equivalent */
+            font-size: 0.75rem;
+            /* text-xs equivalent */
+            color: #6b7280;
+            /* text-gray-500 equivalent */
+        }
+
+        .radio-group {
+            margin-top: 1rem;
+            /* space-y-4 equivalent */
+        }
+
+        .radio-options {
+            margin-top: 0.5rem;
+            /* mt-2 equivalent */
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            /* space-y-2 equivalent */
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-option input[type="radio"] {
+            height: 1rem;
+            /* h-4 equivalent */
+            width: 1rem;
+            /* w-4 equivalent */
+            color: #4f46e5;
+            /* text-indigo-600 equivalent */
+            border-color: #d1d5db;
+            /* border-gray-300 equivalent */
+            border-radius: 50%;
+            /* rounded equivalent */
+            outline: none;
+        }
+
+        .radio-option input[type="radio"]:focus {
+            box-shadow: 0 0 0 1px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.5);
+            /* focus:ring-indigo-500 equivalent */
+        }
+
+        .radio-option label {
+            margin-left: 0.75rem;
+            /* ml-3 equivalent */
+            font-size: 0.875rem;
+            /* text-sm equivalent */
+            font-weight: 500;
+            /* font-medium equivalent */
+            color: #374151;
+            /* text-gray-700 equivalent */
+            margin-bottom: 0;
+            /* Override default label margin */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            /* py-2 px-4 equivalent */
+            border: 1px solid transparent;
+            /* border border-transparent equivalent */
+            border-radius: 0.375rem;
+            /* rounded-md equivalent */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            /* shadow-sm equivalent */
+            font-size: 0.875rem;
+            /* text-sm equivalent */
+            font-weight: 500;
+            /* font-medium equivalent */
+            color: #fff;
+            /* text-white equivalent */
+            background-color: #4f46e5;
+            /* bg-indigo-600 equivalent */
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            /* transition equivalent */
+            transition-duration: 150ms;
+            /* duration-150 equivalent */
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            /* ease-in-out equivalent */
+            outline: none;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4338ca;
+            /* hover:bg-indigo-700 equivalent */
+        }
+
+        button[type="submit"]:focus {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #6366f1;
+            /* focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 equivalent */
+        }
+
+        /* Hidden class for dynamic display */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container">
+        <h1>Add New Notification</h1>
+
+        <!-- Message Box for Success/Error -->
+        <div id="messageBox" class="message-box hidden" role="alert">
+            <p id="messageBoxTitle" class="bold"></p>
+            <p id="messageBoxContent"></p>
+        </div>
+
+        <!-- IMPORTANT: enctype="multipart/form-data" is required for file uploads -->
+        <form id="notificationForm" action="/notifications/add" method="POST" enctype="multipart/form-data"
+            class="form-group">
+            <div class="form-group">
+                <label for="content">Notification Content</label>
+                <textarea id="content" name="content" rows="5" placeholder="Enter notification message here..."
+                    required><%= typeof formData !== 'undefined' ? formData.content : '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="mediaFile">Upload Media (Optional)</label>
+                <!-- Changed type to "file" and added accept="*/*" to allow all file types -->
+                <input type="file" id="mediaFile" name="mediaFile" accept="png, jpg, jpeg, gif">
+                <p class="file-hint">Max file size: 5MB (example limit)</p>
+            </div>
+
+            <div class="form-group radio-group">
+                <label>Notification Type</label>
+                <div class="radio-options">
+                    <div class="radio-option">
+                        <input id="type-public" name="type" type="radio" value="public" required <%=typeof formData
+                            !=='undefined' && formData.type==='public' ? 'checked' : '' %>>
+                        <label for="type-public">
+                            Public (Visible to all users)
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input id="type-specialization" name="type" type="radio" value="specialization" required
+                            <%=typeof formData !=='undefined' && formData.type==='specialization' ? 'checked' : '' %>>
+                        <label for="type-specialization">
+                            Specialization (Visible only to specific admins/roles)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialization Dropdown - Initially Hidden -->
+            <div id="specializationGroup" class="form-group hidden">
+                <label for="specialization">Select Specialization</label>
+                <select id="specialization" name="specialization" class="form-select">
+                    <option value="">-- Loading specializations --</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">
+                    Create Notification
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded. Initializing script...');
+
+            const publicRadio = document.getElementById('type-public');
+            const specializationRadio = document.getElementById('type-specialization');
+            const specializationGroup = document.getElementById('specializationGroup');
+            const specializationSelect = document.getElementById('specialization');
+            const notificationForm = document.getElementById('notificationForm');
+            const messageBox = document.getElementById('messageBox');
+            const messageBoxTitle = document.getElementById('messageBoxTitle');
+            const messageBoxContent = document.getElementById('messageBoxContent');
+
+            // Function to show/hide specialization dropdown
+            const toggleSpecialization = () => {
+                console.log('toggleSpecialization called. specializationRadio.checked:', specializationRadio.checked);
+                if (specializationRadio.checked) {
+                    specializationGroup.classList.remove('hidden');
+                    specializationSelect.setAttribute('required', 'true'); // Make specialization required
+                    console.log('Specialization group shown.');
+                } else {
+                    specializationGroup.classList.add('hidden');
+                    specializationSelect.removeAttribute('required'); // Make specialization not required
+                    specializationSelect.value = ''; // Clear selection when hidden
+                    console.log('Specialization group hidden.');
+                }
+            };
+
+            // Function to populate specialization dropdown
+            const populateSpecializations = async (preSelectedSpecialization = '') => {
+                console.log('Fetching specializations...');
+                try {
+                    // FIX: Use an absolute URL for the fetch request
+                    const response = await fetch('/specializations/all');
+                    console.log('Response status from /api/specializations:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const specializations = await response.json();
+                    console.log('Fetched specializations data:', specializations);
+
+                    specializationSelect.innerHTML = '<option value="">-- Select a specialization --</option>'; // Clear existing options
+                    specializations.forEach(spec => {
+                        console.log(spec)
+                        const option = document.createElement('option');
+                        option.value = spec._id;
+                        option.textContent = spec.name;
+                        // Pre-select if a value is provided (e.g., from error re-population)
+                        if (preSelectedSpecialization === spec) {
+                            option.selected = true;
+                            console.log(`Pre-selecting specialization: ${spec.name}`);
+                        }
+                        specializationSelect.appendChild(option);
+                    });
+                    console.log('Specializations dropdown populated.');
+
+                    // After populating, ensure the correct state based on radio buttons
+                    toggleSpecialization();
+
+                } catch (error) {
+                    console.error('Error fetching specializations:', error);
+                    specializationSelect.innerHTML = '<option value="">-- Failed to load specializations --</option>';
+                    displayMessage('Failed to load specialization list. Please try refreshing.', 'error');
+                }
+            };
+
+            // --- Initial setup on page load ---
+            // Fetch and populate the dropdown first
+            populateSpecializations();
+            // Then set initial visibility of specialization group based on server-rendered radio state
+            // (This will be called again inside populateSpecializations after options are added)
+
+
+            // Event listeners for radio button changes
+            publicRadio.addEventListener('change', toggleSpecialization);
+            specializationRadio.addEventListener('change', toggleSpecialization);
+            console.log('Event listeners for radio buttons attached.');
+
+
+            // Function to display messages
+            const displayMessage = (message, type) => {
+                messageBox.classList.remove('hidden', 'success', 'error');
+                messageBox.classList.add(type);
+                messageBoxTitle.textContent = type === 'success' ? 'Success!' : 'Error!';
+                messageBoxContent.textContent = message;
+                console.log(`Displaying message: ${message} (${type})`);
+            };
+
+            // Function to clear messages
+            const clearMessage = () => {
+                messageBox.classList.add('hidden');
+                messageBox.classList.remove('success', 'error');
+                messageBoxTitle.textContent = '';
+                messageBoxContent.textContent = '';
+                console.log('Message box cleared.');
+            };
+
+            // Handle form submission via Fetch API
+            notificationForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+                console.log('Form submission initiated.');
+
+                clearMessage(); // Clear previous messages
+
+                const formData = new FormData(notificationForm);
+                const content = formData.get('content');
+                const type = formData.get('type');
+                const specialization = formData.get('specialization');
+                const mediaFile = formData.get('mediaFile'); // Get the File object
+
+                console.log('Form Data for submission:', { content, type, specialization, mediaFile: mediaFile ? mediaFile.name : 'absent' });
+
+                // Client-side validation for specialization
+                if (type === 'specialization' && (!specialization || specialization === '')) {
+                    displayMessage('Please select a specialization for specialization type notifications.', 'error');
+                    console.error('Client-side validation failed: Specialization missing.');
+                    return;
+                }
+
+                try {
+                    // Disable button to prevent multiple submissions
+                    const submitButton = notificationForm.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Creating...';
+                    console.log('Submit button disabled.');
+
+
+                    const response = await fetch('/notifications/add', {
+                        method: 'POST',
+                        body: formData // FormData handles multipart/form-data automatically
+                    });
+
+                    const result = await response.json(); // Server will respond with JSON
+                    console.log('Server response received:', result);
+
+                    if (response.ok) { // Check if HTTP status is 2xx
+                        displayMessage(result.message || 'Notification added successfully!', 'success');
+                        notificationForm.reset(); // Clear the form fields
+                        // After reset, ensure specialization dropdown is reset and hidden if public is default
+                        specializationSelect.value = '';
+                        toggleSpecialization();
+                        // Re-populate specializations to ensure dropdown is fresh (though not strictly needed after reset)
+                        populateSpecializations();
+                        console.log('Form reset and success message displayed.');
+                    } else {
+                        displayMessage(result.message || 'Failed to add notification.', 'error');
+                        console.error('Server responded with error:', result.message);
+
+                        // Manually re-populate form fields on error
+                        document.getElementById('content').value = content;
+                        if (type === 'public') {
+                            publicRadio.checked = true;
+                        } else if (type === 'specialization') {
+                            specializationRadio.checked = true;
+                        }
+                        // Re-populate specializations and pre-select the one from the failed submission
+                        populateSpecializations(specialization);
+                        toggleSpecialization(); // Ensure visibility is correct after re-populating radios
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    displayMessage('An unexpected error occurred. Please try again.', 'error');
+
+                    // Manually re-populate form fields on network error
+                    document.getElementById('content').value = content;
+                    if (type === 'public') {
+                        publicRadio.checked = true;
+                    } else if (type === 'specialization') {
+                        specializationRadio.checked = true;
+                    }
+                    populateSpecializations(specialization);
+                    toggleSpecialization(); // Ensure visibility is correct after re-populating radios
+                } finally {
+                    // Re-enable button
+                    const submitButton = notificationForm.querySelector('button[type="submit"]');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Create Notification';
+                    console.log('Submit button re-enabled.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

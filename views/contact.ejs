@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/script.js"></script>
+    <!-- header -->
+
+    <title>تواصل مع مِــدَاد</title>
+
+    <!-- style -->
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/frameWork.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!-- icons lib -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/503befbdb7.js" crossorigin="anonymous"></script>
+
+    <meta name="description" content="تواصل مع فريق مِــدَاد - نحن هنا لمساعدتك">
+    <meta name="keywords" content="اتصال, تواصل, دعم, مساعدة, مِــدَاد">
+    <meta property="og:title" content="تواصل مع مِــدَاد">
+    <meta property="og:description" content="نحن هنا لمساعدتك - تواصل معنا">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+
+</head>
+
+<body>
+
+    <!-- start Navbar -->
+
+    <div class="navbar">
+        <% if(user) {%>
+            <div class="userData">
+                <img class="cover"
+                    src="https://ik.imagekit.io/83055nufx/userIcon/<%=user.gender%>Student.png?updatedAt=1751925030845">
+                <p class="username">
+                    <%= user.username%>
+                </p>
+                <button onclick="window.location.href='/profile'" class="setting"><svg width="20" height="20"
+                        viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.4415 0H10.5585C11.4193 0 12.1836 0.55086 12.4558 1.36754L12.88 2.63999C12.9573 2.87193 13.1169 3.06751 13.3286 3.18976L14.2334 3.7122C14.4451 3.83447 14.6943 3.87492 14.9339 3.8259L16.2479 3.55701C17.0913 3.38443 17.9505 3.77088 18.3809 4.51641L18.9394 5.48373C19.3698 6.22925 19.2749 7.16657 18.7037 7.81067L17.8139 8.8142C17.6516 8.9971 17.5621 9.2332 17.5621 9.4777V10.5224C17.5621 10.7669 17.6517 11.0029 17.8139 11.1859L18.7038 12.1894C19.275 12.8335 19.3699 13.7708 18.9395 14.5163L18.381 15.4837C17.9506 16.2292 17.0914 16.6156 16.248 16.4431L14.934 16.1742C14.6944 16.1251 14.4452 16.1656 14.2335 16.2878L13.3286 16.8102C13.1169 16.9325 12.9573 17.1281 12.88 17.36L12.4558 18.6325C12.1836 19.4491 11.4193 20 10.5585 20H9.4415C8.5806 20 7.81635 19.4491 7.54412 18.6325L7.11999 17.3601C7.04267 17.1281 6.88304 16.9325 6.67128 16.8102L5.76643 16.2879C5.55469 16.1656 5.30551 16.1252 5.06598 16.1742L3.75195 16.4431C2.90856 16.6157 2.04937 16.2293 1.61893 15.4837L1.06045 14.5164C0.630023 13.7709 0.724943 12.8336 1.2961 12.1895L2.18598 11.1859C2.3482 11.003 2.43777 10.767 2.43778 10.5225L2.43779 9.4776C2.43779 9.2331 2.34822 8.9971 2.18599 8.8141L1.29612 7.8106C0.724973 7.1665 0.630053 6.22919 1.06048 5.48366L1.61896 4.51634C2.04939 3.77081 2.90859 3.38436 3.75197 3.55695L5.06598 3.82584C5.30552 3.87486 5.55472 3.83442 5.76646 3.71217L6.6713 3.18976C6.88305 3.06751 7.04267 2.87192 7.11999 2.63996L7.54412 1.36754C7.81635 0.55086 8.5806 0 9.4415 0ZM10 13.5C11.933 13.5 13.5 11.933 13.5 10C13.5 8.067 11.933 6.5 10 6.5C8.067 6.5 6.5 8.067 6.5 10C6.5 11.933 8.067 13.5 10 13.5Z"
+                            fill="whitesmoke" />
+                    </svg>
+                </button>
+            </div>
+            <% } else{%>
+
+                <button onclick="window.location.href='/login'" class="notLoggedBtn">
+                    تسجيل الدخول
+                </button>
+
+                <% } %>
+                    <img src="media/midad2.png" class="logos">
+                    <button id="action1" onclick="test()"><svg width="30" height="25" viewBox="0 0 30 25" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0 2.08333C0 1.5308 0.225765 1.0009 0.627628 0.610195C1.02949 0.219494 1.57454 0 2.14286 0H27.8571C28.4255 0 28.9705 0.219494 29.3724 0.610195C29.7742 1.0009 30 1.5308 30 2.08333C30 2.63587 29.7742 3.16577 29.3724 3.55647C28.9705 3.94717 28.4255 4.16667 27.8571 4.16667H2.14286C1.57454 4.16667 1.02949 3.94717 0.627628 3.55647C0.225765 3.16577 0 2.63587 0 2.08333ZM0 12.5C0 11.9475 0.225765 11.4176 0.627628 11.0269C1.02949 10.6362 1.57454 10.4167 2.14286 10.4167H27.8571C28.4255 10.4167 28.9705 10.6362 29.3724 11.0269C29.7742 11.4176 30 11.9475 30 12.5C30 13.0525 29.7742 13.5824 29.3724 13.9731C28.9705 14.3638 28.4255 14.5833 27.8571 14.5833H2.14286C1.57454 14.5833 1.02949 14.3638 0.627628 13.9731C0.225765 13.5824 0 13.0525 0 12.5ZM0 22.9167C0 22.3641 0.225765 21.8342 0.627628 21.4435C1.02949 21.0528 1.57454 20.8333 2.14286 20.8333H27.8571C28.4255 20.8333 28.9705 21.0528 29.3724 21.4435C29.7742 21.8342 30 22.3641 30 22.9167C30 23.4692 29.7742 23.9991 29.3724 24.3898C28.9705 24.7805 28.4255 25 27.8571 25H2.14286C1.57454 25 1.02949 24.7805 0.627628 24.3898C0.225765 23.9991 0 23.4692 0 22.9167Z"
+                                fill="#A5A5A8" />
+                        </svg>
+                    </button>
+    </div>
+
+    <div class="sidebar">
+        <% if(user) {%>
+            <div class="userData-mobile" hidden>
+                <img class="cover"
+                    src="https://ik.imagekit.io/83055nufx/userIcon/<%=user.gender%>Student.png?updatedAt=1751925030845">
+                <p class="username">
+                    <%= user.username%>
+                </p>
+                <button onclick="window.location.href='/profile'" class="setting"><svg width="20" height="20"
+                        viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.4415 0H10.5585C11.4193 0 12.1836 0.55086 12.4558 1.36754L12.88 2.63999C12.9573 2.87193 13.1169 3.06751 13.3286 3.18976L14.2334 3.7122C14.4451 3.83447 14.6943 3.87492 14.9339 3.8259L16.2479 3.55701C17.0913 3.38443 17.9505 3.77088 18.3809 4.51641L18.9394 5.48373C19.3698 6.22925 19.2749 7.16657 18.7037 7.81067L17.8139 8.8142C17.6516 8.9971 17.5621 9.2332 17.5621 9.4777V10.5224C17.5621 10.7669 17.6517 11.0029 17.8139 11.1859L18.7038 12.1894C19.275 12.8335 19.3699 13.7708 18.9395 14.5163L18.381 15.4837C17.9506 16.2292 17.0914 16.6156 16.248 16.4431L14.934 16.1742C14.6944 16.1251 14.4452 16.1656 14.2335 16.2878L13.3286 16.8102C13.1169 16.9325 12.9573 17.1281 12.88 17.36L12.4558 18.6325C12.1836 19.4491 11.4193 20 10.5585 20H9.4415C8.5806 20 7.81635 19.4491 7.54412 18.6325L7.11999 17.3601C7.04267 17.1281 6.88304 16.9325 6.67128 16.8102L5.76643 16.2879C5.55469 16.1656 5.30551 16.1252 5.06598 16.1742L3.75195 16.4431C2.90856 16.6157 2.04937 16.2293 1.61893 15.4837L1.06045 14.5164C0.630023 13.7709 0.724943 12.8336 1.2961 12.1895L2.18598 11.1859C2.3482 11.003 2.43777 10.767 2.43778 10.5225L2.43779 9.4776C2.43779 9.2331 2.34822 8.9971 2.18599 8.8141L1.29612 7.8106C0.724973 7.1665 0.630053 6.22919 1.06048 5.48366L1.61896 4.51634C2.04939 3.77081 2.90859 3.38436 3.75197 3.55695L5.06598 3.82584C5.30552 3.87486 5.55472 3.83442 5.76646 3.71217L6.6713 3.18976C6.88305 3.06751 7.04267 2.87192 7.11999 2.63996L7.54412 1.36754C7.81635 0.55086 8.5806 0 9.4415 0ZM10 13.5C11.933 13.5 13.5 11.933 13.5 10C13.5 8.067 11.933 6.5 10 6.5C8.067 6.5 6.5 8.067 6.5 10C6.5 11.933 8.067 13.5 10 13.5Z"
+                            fill="whitesmoke" />
+                    </svg>
+                </button>
+            </div>
+            <% } else{%>
+
+                <button onclick="window.location.href='/login'" class="notLoggedBtn-mobile" hidden>
+                    تسجيل الدخول
+                </button>
+
+                <% } %>
+                    <div class="contents">
+                        <ul class="list-ul">
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.35742 17.1113H15.1724" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.67871 14.6886C2.67871 9.05759 3.29271 9.45059 6.59771 6.38559C8.04371 5.22159 10.2937 2.97559 12.2367 2.97559C14.1787 2.97559 16.4737 5.21059 17.9327 6.38559C21.2377 9.45059 21.8507 9.05759 21.8507 14.6886C21.8507 22.9756 19.8917 22.9756 12.2647 22.9756C4.63771 22.9756 2.67871 22.9756 2.67871 14.6886Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <a href="/">الرئيسية</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.8743 16.6719H8.6543" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8743 12.9121H8.6543" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M11.4093 9.15234H8.6543" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.88867 12.9756C3.88867 19.9126 5.98667 22.2256 12.2797 22.2256C18.5737 22.2256 20.6707 19.9126 20.6707 12.9756C20.6707 6.03859 18.5737 3.72559 12.2797 3.72559C5.98667 3.72559 3.88867 6.03859 3.88867 12.9756Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/library">الكتب الجامعية</a>
+                            </li>
+                            <li> <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.2783 3.72559C5.34132 3.72559 3.02832 6.03859 3.02832 12.9756C3.02832 19.9126 5.34132 22.2256 12.2783 22.2256C19.2153 22.2256 21.5283 19.9126 21.5283 12.9756"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M19.8064 5.27922V5.27922C18.8134 4.40022 17.2964 4.49222 16.4174 5.48522C16.4174 5.48522 12.0484 10.4202 10.5334 12.1332C9.01636 13.8452 10.1284 16.2102 10.1284 16.2102C10.1284 16.2102 12.6324 17.0032 14.1264 15.3152C15.6214 13.6272 20.0124 8.66822 20.0124 8.66822C20.8914 7.67522 20.7984 6.15822 19.8064 5.27922Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M15.2871 6.77637L18.8821 9.95937" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/edit">تعديل الملفات</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.2742 3.49023C7.83993 3.49023 5.91326 7.50547 5.91326 10.1598C5.91326 12.1436 6.20088 11.5598 5.10279 13.9798C3.76184 17.4283 9.15422 18.8379 12.2742 18.8379C15.3933 18.8379 20.7856 17.4283 19.4456 13.9798C18.3475 11.5598 18.6352 12.1436 18.6352 10.1598C18.6352 7.50547 16.7075 3.49023 12.2742 3.49023Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14.5839 21.4883C13.2896 22.934 11.2705 22.9511 9.96387 21.4883"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <a href="/notifications">إشعارات هامة</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.2486 3.47559C5.86156 3.47559 4.78256 4.40759 4.78256 11.9046C4.78256 20.2976 4.62556 22.4756 6.22156 22.4756C7.81656 22.4756 10.4216 18.7916 12.2486 18.7916C14.0756 18.7916 16.6806 22.4756 18.2756 22.4756C19.8716 22.4756 19.7146 20.2976 19.7146 11.9046C19.7146 4.40759 18.6356 3.47559 12.2486 3.47559Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/bookMarks">قائمة المرجعيات</a>
+                            </li>
+                            <li class="activeList6"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.7714 13.4136C11.7714 13.4136 -0.205275 10.936 3.95667 8.53341C7.46882 6.50611 19.5728 3.02056 21.2638 3.92116C22.1644 5.61216 18.6788 17.7161 16.6515 21.2283C14.249 25.3902 11.7714 13.4136 11.7714 13.4136Z"
+                                        stroke="#a5a5a8" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M11.7715 13.4133L21.2639 3.9209" stroke="#a5a5a8" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <a href="/contact">تواصل</a>
+                            </li>
+
+                            <div class="footer-wright">
+                                <p class="right">© | Enigma - 2025</p>
+                            </div>
+                        </ul>
+                    </div>
+
+    </div>
+
+
+    <!-- End navbar -->
+
+    <div class="block" onclick="hideblock()"></div>
+
+    <!-- start content -->
+
+    <div class="path">
+        <h5><a href="/">الرئيسية</a> </h5>
+        <h5> / </h5>
+        <h5>تواصل</h5>
+    </div>
+
+    <div class="topContact">
+        <h1>يمكنك مراسلتنا عبر كتابة رسالتك في هذا النموذج وإرسالها</h1>
+    </div>
+    <div class="mailUs" role="form" aria-label="نموذج الاتصال">
+        <input id="email" type="email" required placeholder="عنوان البريد الإلكتروني"
+            aria-label="عنوان البريد الإلكتروني" aria-required="true">
+        <textarea id="content" placeholder="محتوى الرسالة" aria-label="محتوى الرسالة" aria-required="true"></textarea>
+        <button id="sendButton" aria-label="إرسال الرسالة">إرسال</button>
+    </div>
+    <p id="statusMessage" style="display: none;"></p>
+</body>
+<script>
+    // Get references to the elements
+    const emailInput = document.getElementById('email');
+    const contentTextarea = document.getElementById('content');
+    const sendButton = document.getElementById('sendButton');
+    const statusMessageDiv = document.getElementById('statusMessage');
+
+    // Function to display messages
+    function displayMessage(message, type) {
+
+        if (type === "error") {
+            statusMessageDiv.textContent = message;
+            statusMessageDiv.className = `message-box ${type}`; // Add type class (success/error)
+            statusMessageDiv.classList.remove('hidden'); // Show the message box
+            statusMessageDiv.style = " color: #F44336; background-color:#ff000012;"
+        } else {
+            statusMessageDiv.textContent = message;
+            statusMessageDiv.className = `message-box ${type}`; // Add type class (success/error)
+            statusMessageDiv.classList.remove('hidden'); // Show the message box
+            statusMessageDiv.style = " color: #34aa53; background-color:rgb(52 170 83 / 15%)"
+        }
+
+
+    }
+
+    // Add event listener to the button
+    sendButton.addEventListener('click', async () => {
+        const email = emailInput.value;
+        const content = contentTextarea.value;
+
+        // Clear previous messages
+        statusMessageDiv.classList.add('hidden');
+        statusMessageDiv.textContent = '';
+
+        // Basic client-side validation
+        if (!email.trim()) {
+            displayMessage('البريد الإلكتروني مطلوب.', 'error');
+            return;
+        }
+
+        // Disable button and show loading indicator (optional)
+        sendButton.disabled = true;
+        sendButton.textContent = 'جاري الإرسال...';
+        sendButton.classList.add('opacity-75', 'cursor-not-allowed');
+
+        try {
+            const response = await fetch('/mail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({ email, content })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) { // Check if the response status is 2xx
+                displayMessage(data.message, 'success');
+                // Optionally clear the form on success
+                emailInput.value = '';
+                contentTextarea.value = '';
+            } else {
+                // Server returned an error (e.g., 400, 500)
+                displayMessage(data.message || data.error || 'حدث خطأ غير متوقع.', 'error');
+            }
+        } catch (error) {
+            console.error('Error sending mail:', error);
+            displayMessage('فشل في الاتصال بالخادم. يرجى المحاولة مرة أخرى لاحقًا.', 'error');
+        } finally {
+            // Re-enable button
+            sendButton.disabled = false;
+            sendButton.textContent = 'إرسال';
+            sendButton.classList.remove('opacity-75', 'cursor-not-allowed');
+        }
+    });
+</script>
+
+</html>
