@@ -446,11 +446,12 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
+app.listen( process.env.LEANCLOUD_APP_PORT, () => {
   console.log(`App listening on port ${port}`);
   console.log(`Platform: ${os.platform()}`);
   console.log(`OS Type: ${os.type()}`); 
 });
+
 
 
 
