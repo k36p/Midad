@@ -1,0 +1,197 @@
+/* fonst */
+
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+
+/* var */
+:root {
+  --main-1: #131b21;
+  --main-2: #54dbf5;
+  --main-3: #3770a0;
+  --white: #fff;
+  --skeleton: #434350ab;
+  --text-color: #a5a5a8;
+  --gray-0: #919198;
+  --gray-1: #434350;
+  --gray-2: #393943;
+  --gray-3: #292930;
+  --gray-4: #2c2c35;
+  --gray-5: #1f1f25;
+  --gray-6: #0c0c0f;
+  --background: #404660;
+  --background-hover: #3a4059;
+  --background-left: #2b3044;
+  --badge-purple-bg: #9162c015;
+  --badge-purple-fg: #9162c0;
+  --badge-green-bg: #449d5d15;
+  --badge-green-fg: #449d5d;
+  --badge-amber-bg: #d1772415;
+  --badge-amber-fg: #d17724;
+  --badge-blue-bg: #3b88e915;
+  --badge-blue-fg: #3b88e9;
+  --shadow: rgba(13, 15, 25, 0.2);
+}
+
+tr th {
+  text-align: center !important;
+}
+
+.dataTables_paginate,
+.paginate_button {
+  color: white !important;
+}
+
+.Actions button {
+  background-color: var(--badge-green-fg);
+  color: white;
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: none;
+  margin: 0;
+}
+
+.editContent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundShadow {
+  width: 100%;
+  height: 100%;
+  background-color: #00000065;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dataSet {
+  width: 85%;
+  height: max-content;
+  background-color: var(--gray-1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 150px;
+}
+
+.dataSet h2 {
+  color: white;
+  font-family: "Cairo", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dataSet .form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  direction: rtl;
+}
+
+.dataSet .form label {
+  color: white;
+  font-family: "Cairo", sans-serif;
+}
+
+.dataSet .form input,
+.dataSet .form select,
+.dataSet .form textarea {
+  background-color: var(--gray-2);
+  border: 1px solid var(--gray-3);
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  font-family: "Cairo", sans-serif;
+}
+.dataSet .form input:focus,
+.dataSet .form select:focus,
+.dataSet .form textarea:focus {
+  outline: none;
+  border: 1px solid var(--main-2);
+}
+
+.dataSet .form button {
+  background-color: var(--main-2);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Cairo", sans-serif;
+  transition: background-color 0.3s ease;
+}
+.dataSet .form button:hover {
+  background-color: var(--main-3);
+}
+.dataSet .form .closeBtn {
+  background-color: var(--badge-amber-fg);
+}
+.dataSet .form .closeBtn:hover {
+  background-color: #b66a1e;
+}
+
+.loadingEditData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+}
+
+.loadingEditData svg {
+  animation: roll 2s linear infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.new-course,
+.new-college {
+  background-color: var(--skeleton);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Cairo", sans-serif;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.container {
+  margin: 30px auto !important;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+  direction: rtl;
+}
+
+.userTabaleData {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  direction: rtl;
+  gap: 10px;
+}
+
+.dtr-details {
+  width: 100% !important;
+}
