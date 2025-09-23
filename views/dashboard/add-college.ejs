@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة كلية جديدة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            direction: rtl;
+            /* للعربية */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+            /* لمحاذاة التسميات لليمين */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            /* لضمان عدم تجاوز العرض المحدد */
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            /* مخفي افتراضياً */
+        }
+
+        #message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        #message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>إضافة كلية جديدة</h2>
+        <form id="addCollegeForm" action="/colleges" method="POST">
+            <div class="form-group">
+                <label for="collegeName">اسم الكلية:</label>
+                <input type="text" id="collegeName" name="name" required placeholder="أدخل اسم الكلية هنا">
+            </div>
+            <button type="submit">إضافة الكلية</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('addCollegeForm').addEventListener('submit', async function (event) {
+            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+            const collegeName = document.getElementById('collegeName').value.trim();
+            const messageDiv = document.getElementById('message');
+
+            // إخفاء الرسالة السابقة
+            messageDiv.style.display = 'none';
+            messageDiv.className = ''; // مسح فئات النجاح/الخطأ
+
+            if (!collegeName) {
+                messageDiv.textContent = 'الرجاء إدخال اسم الكلية.';
+                messageDiv.classList.add('error');
+                messageDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch('/colleges', { // تأكد أن المسار صحيح كما في ملف server.js (مثلاً /api/colleges)
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // مهم جداً لإرسال JSON
+                    },
+                    body: JSON.stringify({ name: collegeName }) // إرسال البيانات كـ JSON
+                });
+
+                const responseData = await response.json(); // افتراض أن الخادم يرجع JSON
+
+                if (response.ok) { // حالة 2xx تعني نجاح الطلب
+                    messageDiv.textContent = responseData.message || 'تمت إضافة الكلية بنجاح.';
+                    messageDiv.classList.add('success');
+                    document.getElementById('addCollegeForm').reset(); // مسح حقل الإدخال
+                } else { // حالة خطأ (مثلاً 400, 500)
+                    messageDiv.textContent = responseData.message || responseData.error || 'فشل إضافة الكلية.';
+                    messageDiv.classList.add('error');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                messageDiv.textContent = 'حدث خطأ في الاتصال بالخادم. يرجى المحاولة مرة أخرى.';
+                messageDiv.classList.add('error');
+            } finally {
+                messageDiv.style.display = 'block'; // إظهار الرسالة
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+    <script src="https://kit.fontawesome.com/503befbdb7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/frameWork.css">
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/normalize.css">
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
+
+
+    <script src="/js/script.js"></script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <% if(user) {%>
+            <div class="userData">
+                <img class="cover"
+                    src="https://ik.imagekit.io/83055nufx/userIcon/<%=user.gender%>Student.png?updatedAt=1751925030845">
+                <p class="username">
+                    <%= user.username%>
+                </p>
+                <button onclick="window.location.href='/profile'" class="setting"><svg width="20" height="20"
+                        viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.4415 0H10.5585C11.4193 0 12.1836 0.55086 12.4558 1.36754L12.88 2.63999C12.9573 2.87193 13.1169 3.06751 13.3286 3.18976L14.2334 3.7122C14.4451 3.83447 14.6943 3.87492 14.9339 3.8259L16.2479 3.55701C17.0913 3.38443 17.9505 3.77088 18.3809 4.51641L18.9394 5.48373C19.3698 6.22925 19.2749 7.16657 18.7037 7.81067L17.8139 8.8142C17.6516 8.9971 17.5621 9.2332 17.5621 9.4777V10.5224C17.5621 10.7669 17.6517 11.0029 17.8139 11.1859L18.7038 12.1894C19.275 12.8335 19.3699 13.7708 18.9395 14.5163L18.381 15.4837C17.9506 16.2292 17.0914 16.6156 16.248 16.4431L14.934 16.1742C14.6944 16.1251 14.4452 16.1656 14.2335 16.2878L13.3286 16.8102C13.1169 16.9325 12.9573 17.1281 12.88 17.36L12.4558 18.6325C12.1836 19.4491 11.4193 20 10.5585 20H9.4415C8.5806 20 7.81635 19.4491 7.54412 18.6325L7.11999 17.3601C7.04267 17.1281 6.88304 16.9325 6.67128 16.8102L5.76643 16.2879C5.55469 16.1656 5.30551 16.1252 5.06598 16.1742L3.75195 16.4431C2.90856 16.6157 2.04937 16.2293 1.61893 15.4837L1.06045 14.5164C0.630023 13.7709 0.724943 12.8336 1.2961 12.1895L2.18598 11.1859C2.3482 11.003 2.43777 10.767 2.43778 10.5225L2.43779 9.4776C2.43779 9.2331 2.34822 8.9971 2.18599 8.8141L1.29612 7.8106C0.724973 7.1665 0.630053 6.22919 1.06048 5.48366L1.61896 4.51634C2.04939 3.77081 2.90859 3.38436 3.75197 3.55695L5.06598 3.82584C5.30552 3.87486 5.55472 3.83442 5.76646 3.71217L6.6713 3.18976C6.88305 3.06751 7.04267 2.87192 7.11999 2.63996L7.54412 1.36754C7.81635 0.55086 8.5806 0 9.4415 0ZM10 13.5C11.933 13.5 13.5 11.933 13.5 10C13.5 8.067 11.933 6.5 10 6.5C8.067 6.5 6.5 8.067 6.5 10C6.5 11.933 8.067 13.5 10 13.5Z"
+                            fill="whitesmoke" />
+                    </svg>
+                </button>
+            </div>
+            <% } else{%>
+
+                <button onclick="window.location.href='/login'" class="notLoggedBtn">
+                    تسجيل الدخول
+                </button>
+
+                <% } %>
+                    <img src="media/midad2.png" class="logos">
+                    <button id="action1" onclick="test()"><svg width="30" height="25" viewBox="0 0 30 25" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M0 2.08333C0 1.5308 0.225765 1.0009 0.627628 0.610195C1.02949 0.219494 1.57454 0 2.14286 0H27.8571C28.4255 0 28.9705 0.219494 29.3724 0.610195C29.7742 1.0009 30 1.5308 30 2.08333C30 2.63587 29.7742 3.16577 29.3724 3.55647C28.9705 3.94717 28.4255 4.16667 27.8571 4.16667H2.14286C1.57454 4.16667 1.02949 3.94717 0.627628 3.55647C0.225765 3.16577 0 2.63587 0 2.08333ZM0 12.5C0 11.9475 0.225765 11.4176 0.627628 11.0269C1.02949 10.6362 1.57454 10.4167 2.14286 10.4167H27.8571C28.4255 10.4167 28.9705 10.6362 29.3724 11.0269C29.7742 11.4176 30 11.9475 30 12.5C30 13.0525 29.7742 13.5824 29.3724 13.9731C28.9705 14.3638 28.4255 14.5833 27.8571 14.5833H2.14286C1.57454 14.5833 1.02949 14.3638 0.627628 13.9731C0.225765 13.5824 0 13.0525 0 12.5ZM0 22.9167C0 22.3641 0.225765 21.8342 0.627628 21.4435C1.02949 21.0528 1.57454 20.8333 2.14286 20.8333H27.8571C28.4255 20.8333 28.9705 21.0528 29.3724 21.4435C29.7742 21.8342 30 22.3641 30 22.9167C30 23.4692 29.7742 23.9991 29.3724 24.3898C28.9705 24.7805 28.4255 25 27.8571 25H2.14286C1.57454 25 1.02949 24.7805 0.627628 24.3898C0.225765 23.9991 0 23.4692 0 22.9167Z"
+                                fill="#A5A5A8" />
+                        </svg>
+                    </button>
+    </div>
+
+    <div class="sidebar">
+        <% if(user) {%>
+            <div class="userData-mobile" hidden>
+                <img class="cover"
+                    src="https://ik.imagekit.io/83055nufx/userIcon/<%=user.gender%>Student.png?updatedAt=1751925030845">
+                <p class="username">
+                    <%= user.username%>
+                </p>
+                <button onclick="window.location.href='/profile'" class="setting"><svg width="20" height="20"
+                        viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.4415 0H10.5585C11.4193 0 12.1836 0.55086 12.4558 1.36754L12.88 2.63999C12.9573 2.87193 13.1169 3.06751 13.3286 3.18976L14.2334 3.7122C14.4451 3.83447 14.6943 3.87492 14.9339 3.8259L16.2479 3.55701C17.0913 3.38443 17.9505 3.77088 18.3809 4.51641L18.9394 5.48373C19.3698 6.22925 19.2749 7.16657 18.7037 7.81067L17.8139 8.8142C17.6516 8.9971 17.5621 9.2332 17.5621 9.4777V10.5224C17.5621 10.7669 17.6517 11.0029 17.8139 11.1859L18.7038 12.1894C19.275 12.8335 19.3699 13.7708 18.9395 14.5163L18.381 15.4837C17.9506 16.2292 17.0914 16.6156 16.248 16.4431L14.934 16.1742C14.6944 16.1251 14.4452 16.1656 14.2335 16.2878L13.3286 16.8102C13.1169 16.9325 12.9573 17.1281 12.88 17.36L12.4558 18.6325C12.1836 19.4491 11.4193 20 10.5585 20H9.4415C8.5806 20 7.81635 19.4491 7.54412 18.6325L7.11999 17.3601C7.04267 17.1281 6.88304 16.9325 6.67128 16.8102L5.76643 16.2879C5.55469 16.1656 5.30551 16.1252 5.06598 16.1742L3.75195 16.4431C2.90856 16.6157 2.04937 16.2293 1.61893 15.4837L1.06045 14.5164C0.630023 13.7709 0.724943 12.8336 1.2961 12.1895L2.18598 11.1859C2.3482 11.003 2.43777 10.767 2.43778 10.5225L2.43779 9.4776C2.43779 9.2331 2.34822 8.9971 2.18599 8.8141L1.29612 7.8106C0.724973 7.1665 0.630053 6.22919 1.06048 5.48366L1.61896 4.51634C2.04939 3.77081 2.90859 3.38436 3.75197 3.55695L5.06598 3.82584C5.30552 3.87486 5.55472 3.83442 5.76646 3.71217L6.6713 3.18976C6.88305 3.06751 7.04267 2.87192 7.11999 2.63996L7.54412 1.36754C7.81635 0.55086 8.5806 0 9.4415 0ZM10 13.5C11.933 13.5 13.5 11.933 13.5 10C13.5 8.067 11.933 6.5 10 6.5C8.067 6.5 6.5 8.067 6.5 10C6.5 11.933 8.067 13.5 10 13.5Z"
+                            fill="whitesmoke" />
+                    </svg>
+                </button>
+            </div>
+            <% } else{%>
+
+                <button onclick="window.location.href='/login'" class="notLoggedBtn-mobile" hidden>
+                    تسجيل الدخول
+                </button>
+
+                <% } %>
+                    <div class="contents">
+                        <ul class="list-ul">
+                            <li class="activeList1"><svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.77832 4.2099L12.2783 6.8099L16.7783 4.2099M7.77832 19.7899V14.5999L3.27832 11.9999M21.2783 11.9999L16.7783 14.5999V19.7899M3.54834 6.9599L12.2783 12.0099L21.0083 6.9599M12.2783 22.0799V11.9999M21.2783 15.9999V7.9999C21.278 7.64918 21.1854 7.30471 21.0099 7.00106C20.8343 6.69742 20.5821 6.44526 20.2783 6.2699L13.2783 2.2699C12.9743 2.09437 12.6294 2.00195 12.2783 2.00195C11.9272 2.00195 11.5824 2.09437 11.2783 2.2699L4.27832 6.2699C3.97458 6.44526 3.7223 6.69742 3.54678 7.00106C3.37126 7.30471 3.27868 7.64918 3.27832 7.9999V15.9999C3.27868 16.3506 3.37126 16.6951 3.54678 16.9987C3.7223 17.3024 3.97458 17.5545 4.27832 17.7299L11.2783 21.7299C11.5824 21.9054 11.9272 21.9979 12.2783 21.9979C12.6294 21.9979 12.9743 21.9054 13.2783 21.7299L20.2783 17.7299C20.5821 17.5545 20.8343 17.3024 21.0099 16.9987C21.1854 16.6951 21.278 16.3506 21.2783 15.9999Z"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/dash/colleges">الكليات</a>
+                            </li>
+                            <li><svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M22.2783 12H16.2783L14.2783 15H10.2783L8.27832 12H2.27832M22.2783 12V18C22.2783 18.5304 22.0676 19.0391 21.6925 19.4142C21.3175 19.7893 20.8088 20 20.2783 20H4.27832C3.74789 20 3.23918 19.7893 2.86411 19.4142C2.48903 19.0391 2.27832 18.5304 2.27832 18V12M22.2783 12L18.8283 5.11C18.6627 4.77679 18.4075 4.49637 18.0913 4.30028C17.7751 4.10419 17.4104 4.0002 17.0383 4H7.51832C7.14624 4.0002 6.78158 4.10419 6.46536 4.30028C6.14915 4.49637 5.8939 4.77679 5.72832 5.11L2.27832 12"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/dash/specializations">التخصصات</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.8743 16.6719H8.6543" stroke="#a5a5a8" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8743 12.9121H8.6543" stroke="#a5a5a8" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M11.4093 9.15234H8.6543" stroke="#a5a5a8" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.88867 12.9756C3.88867 19.9126 5.98667 22.2256 12.2797 22.2256C18.5737 22.2256 20.6707 19.9126 20.6707 12.9756C20.6707 6.03859 18.5737 3.72559 12.2797 3.72559C5.98667 3.72559 3.88867 6.03859 3.88867 12.9756Z"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <a href="/dash/courses">المواد الدراسية</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.2742 3.49023C7.83993 3.49023 5.91326 7.50547 5.91326 10.1598C5.91326 12.1436 6.20088 11.5598 5.10279 13.9798C3.76184 17.4283 9.15422 18.8379 12.2742 18.8379C15.3933 18.8379 20.7856 17.4283 19.4456 13.9798C18.3475 11.5598 18.6352 12.1436 18.6352 10.1598C18.6352 7.50547 16.7075 3.49023 12.2742 3.49023Z"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14.5839 21.4883C13.2896 22.934 11.2705 22.9511 9.96387 21.4883"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/dash/notifications">الاشعارات</a>
+                            </li>
+                            <li><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.2511 21.3437C9.01212 21.3437 6.24512 20.8537 6.24512 18.8917C6.24512 16.9297 8.99412 15.2217 12.2511 15.2217C15.4901 15.2217 18.2571 16.9137 18.2571 18.8747C18.2571 20.8357 15.5081 21.3437 12.2511 21.3437Z"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.2514 12.4246C14.3774 12.4246 16.1014 10.7016 16.1014 8.57559C16.1014 6.44959 14.3774 4.72559 12.2514 4.72559C10.1254 4.72559 8.40138 6.44959 8.40138 8.57559C8.39538 10.6936 10.1054 12.4176 12.2244 12.4246H12.2514Z"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M18.6406 11.3676C19.8776 11.0366 20.7896 9.90861 20.7896 8.56561C20.7896 7.16461 19.7966 5.99461 18.4746 5.72461"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19.2217 14.5205C20.9757 14.5205 22.4737 15.7095 22.4737 16.7715C22.4737 17.3965 21.9567 18.0775 21.1727 18.2615"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5.86191 11.3676C4.62391 11.0366 3.71191 9.90861 3.71191 8.56561C3.71191 7.16461 4.70591 5.99461 6.02691 5.72461"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5.28032 14.5205C3.52632 14.5205 2.02832 15.7095 2.02832 16.7715C2.02832 17.3965 2.54532 18.0775 3.33032 18.2615"
+                                        stroke="#a5a5a8" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <a href="/dash/admins">قائمة المشرفين</a>
+                            </li>
+                            <div class="footer-wright">
+                                <p class="right">© | Enigma - 2025</p>
+                            </div>
+                        </ul>
+                    </div>
+
+    </div>
+
+    <!-- End navbar -->
+
+    <div class="block" onclick="hideblock()"></div>
+
+    <div class="dashboardAllContent">
+
+        <div class="add-btn"><button class="new-college" onclick="window.location.href='/new-college'">إضافة كلية
+                جديدة</button>
+        </div>
+        <div class="dashboardContent">
+            <div class="container rtl w-90 m-auto" style="max-width: none;">
+                <div>
+                </div>
+                <table id="List" class="display table table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>إسم المادة</th>
+                            <th>إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let i=0; i < data.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= data[i].name %>
+                                </td>
+                                <td><a class="Actions"><button
+                                            onclick="editSubject(`<%= data[i]._id %>`)">تعديل</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="editContent" hidden>
+
+    </div>
+
+</body>
+<script src="/index.js"></script>
+<script>
+
+    // Initialize alertify notification position
+    alertify.set('notifier', 'position', 'bottom-right');
+
+    $(document).ready(function () {
+        var table = $('#List').DataTable({
+            "pageLength": 50,
+            'orderCellsTop': true,
+            'select': 'api',
+            "order": [[1, 'asc']],
+            "columnDefs": [
+                {
+                    "targets": 1, // Index of the column to disable sorting (0-based index)
+                    "orderable": false // Disable sorting for this column
+                }],
+            "searching": true,
+            "lengthChange": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": {
+                breakpoints: [
+                    { name: 'desktop', width: Infinity },
+                    { name: 'tablet', width: 1024 },
+                    { name: 'phone', width: 800 }
+                ]
+            },
+            "columnDefs": [
+                {
+                    "targets": 0,
+                    "orderable": true
+                },
+                {
+                    "targets": 1,
+                    "orderable": false
+                },
+            ],
+            "columns": [
+                { "className": "all" },
+                { "className": "min-tablet" },
+            ],
+            "dom": '<lf<t>ip>',
+            "fixedHeader": false,
+            "pageLength": -1
+        });
+
+        // Handle click event on a checkbox
+        $('#List').on('click', 'thead .column-selector th input[type="checkbox"]', function (e) {
+            e.stopPropagation();
+            //alert('hi');
+            var colIdx = $(this).closest('th').index();
+            if (this.checked) {
+                table.column(colIdx).select();
+            } else {
+                table.column(colIdx).deselect();
+            }
+        });
+
+        // Handle click event on header cell containg a checkbox
+        $('#List').on('click', 'thead .column-selector th', function (e) {
+            $('input[type="checkbox"]', this).trigger('click');
+        });
+    });
+
+    async function editSubject(id) {
+        const editPage = document.querySelector('.editContent');
+
+        editPage.innerHTML = `<div div class="backgroundShadow" >
+            <div class="dataSet">
+                <h2 class="loadingEditData"><svg width="85" height="85" viewBox="0 0 85 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M42.4997 33.6455C47.3903 33.6455 51.3538 37.6091 51.3538 42.4997C51.3538 47.3903 47.3903 51.3538 42.4997 51.3538C37.6091 51.3538 33.6455 47.3903 33.6455 42.4997C33.6455 37.6091 37.6091 33.6455 42.4997 33.6455Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M71.428 25.6783V25.6783C69.0071 21.4557 63.6478 20.0109 59.459 22.4493C55.8155 24.5658 51.262 21.9175 51.262 17.6809C51.262 12.8077 47.3372 8.85449 42.4988 8.85449V8.85449C37.6605 8.85449 33.7357 12.8077 33.7357 17.6809C33.7357 21.9175 29.1822 24.5658 25.5422 22.4493C21.3499 20.0109 15.9906 21.4557 13.5697 25.6783C11.1522 29.9009 12.5867 35.2989 16.779 37.7338C20.419 39.8538 20.419 45.1469 16.779 47.2669C12.5867 49.7053 11.1522 55.1033 13.5697 59.3224C15.9906 63.5449 21.3499 64.9898 25.5387 62.5549H25.5422C29.1822 60.4349 33.7357 63.0831 33.7357 67.3197V67.3197C33.7357 72.193 37.6605 76.1462 42.4988 76.1462V76.1462C47.3372 76.1462 51.262 72.193 51.262 67.3197V67.3197C51.262 63.0831 55.8155 60.4349 59.459 62.5549C63.6478 64.9898 69.0071 63.5449 71.428 59.3224C73.8489 55.1033 72.411 49.7053 68.2222 47.2669H68.2187C64.5787 45.1469 64.5787 39.8538 68.2222 37.7338C72.411 35.2989 73.8489 29.9009 71.428 25.6783Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+  جاري التحميل ...</h2>
+            </div >
+        </div> `
+
+        editPage.hidden = false;
+
+        // request data
+        const response = await fetch(`/data/college/${id}`, {
+            method: 'GET',
+        });
+
+        const collegeData = await response.json();
+
+        editPage.innerHTML = `<div div class="backgroundShadow" >
+               <div class="dataSet">
+                   <h2>تعديل الكلية</h2>
+                   <div class="form">
+                           <div class="inputBox">
+                               <label for="name">إسم الكلية</label>
+                               <input type="text" name="name" id="nameForUpdate" value="${collegeData.name}" required>
+                           </div>
+                            <div class="btns">
+                               <button type="submit" class="saveBtn" onclick="updateCollege(\`${collegeData._id}\`)">حفظ التعديلات</button>
+                               <button type="button" class="cancelBtn" onclick="closeEdit()">إلغاء</button>
+                           </div>
+                   </div >
+               </div >
+           </div> `
+
+        editPage.hidden = false;
+
+    }
+
+    async function closeEdit() {
+        const editPage = document.querySelector('.editContent');
+        editPage.innerHTML = ``;
+        editPage.hidden = true;
+    }
+
+
+    async function updateCollege(id) {
+
+        const nameInput = document.getElementById('nameForUpdate');
+        const response = await fetch(`/college/update/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: nameInput.value,
+            }), headers: {
+                'Content-Type': 'application/json'
+            }
+
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            if (response.status === 200) {
+                alertify.success('تم تحديث الكلية بنجاح');
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                alertify.error('حدث خطأ أثناء تحديث الكلية');
+            }
+        } else {
+            alertify.error('حدث خطأ أثناء تحديث الكلية');
+        }
+        closeEdit()
+    }
+
+
+</script>
+
+</html>
