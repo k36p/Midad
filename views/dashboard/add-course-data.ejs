@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محرر محتوى الدورة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Typography */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+            /* Lighter background */
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        /* Form Container & Elements */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.95em;
+        }
+
+        select,
+        input:not([type="file"]),
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fdfdff;
+        }
+
+        select:focus,
+        input:not([type="file"]):focus,
+        textarea:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Content Type Sections */
+        .content-type-section {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            background-color: #fbfcfe;
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .content-type-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-type-section h3 {
+            margin-top: 0;
+            color: #3182ce;
+            font-size: 1.4em;
+            border-bottom: 1px solid #ebf8ff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        button {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: #2b6cb0;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 1.1em;
+            background-color: #48bb78;
+            /* Green for primary action */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #38a169;
+        }
+
+        .add-link {
+            background-color: #38a169;
+            /* Green for add */
+            padding: 8px 15px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .add-link:hover {
+            background-color: #2f855a;
+        }
+
+        .remove-link {
+            background-color: #e53e3e;
+            /* Red for remove */
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .remove-link:hover {
+            background-color: #c53030;
+        }
+
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed #cbd5e0;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 15px;
+            background-color: #f7fafc;
+            color: #718096;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: #9f7aea;
+            background-color: #f0eafb;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+            /* Hide default file input */
+        }
+
+        .file-upload label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .file-upload label::before {
+            content: '⬆️';
+            /* Unicode upload icon */
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #a0aec0;
+        }
+
+        /* Added style for displaying file name */
+        .file-upload .file-name {
+            margin-top: 10px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        /* Link Row */
+        .link-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            /* Allow wrapping on smaller screens */
+        }
+
+        .link-row input {
+            flex: 1;
+            min-width: 150px;
+            /* Ensure inputs don't get too small */
+        }
+
+        .link-row button {
+            flex-shrink: 0;
+            /* Prevent buttons from shrinking */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .link-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .link-row input,
+            .link-row button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>محرر محتوى الدورة</h1>
+    <p>أضف محتوى جديدًا إلى أي دورة تدريبية</p>
+
+    <div class="form-container">
+        <form id="courseEditForm" action="/course/update" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="courseSelect">اختر الدورة</label>
+                <select id="courseSelect" name="courseId" required aria-describedby="courseSelectHelp">
+                    <option value="">-- اختر دورة --</option>
+                    <% if (typeof data !=='undefined' && data.length) { %>
+                        <% data.forEach(course=> { %>
+                            <option value="<%= course._id %>">
+                                <%= course.name %>
+                            </option>
+                            <% }); %>
+                                <% } else { %>
+                                    <option value="" disabled>لا توجد دورات متاحة</option>
+                                    <% } %>
+                </select>
+                <small id="courseSelectHelp" class="sr-only">اختر الدورة التي تريد إضافة المحتوى إليها.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="contentType">نوع المحتوى</label>
+                <select id="contentType" name="contentType" required onchange="handleContentTypeChange()"
+                    aria-describedby="contentTypeHelp">
+                    <option value="">-- اختر نوع المحتوى --</option>
+                    <option value="link-group">مجموعة روابط</option>
+                    <option value="youtube-link">رابط يوتيوب</option>
+                    <option value="file">رفع ملف</option>
+                    <option value="text">محتوى نصي</option>
+                </select>
+                <small id="contentTypeHelp" class="sr-only">حدد نوع المحتوى الذي تريد إضافته.</small>
+            </div>
+
+            <div class="content-type-section" id="linkGroupSection">
+                <h3>مجموعة روابط</h3>
+                <div class="form-group">
+                    <label for="groupTypeSelect">نوع المجموعة</label>
+                    <select id="groupTypeSelect" name="groupType" onchange="updateGroupTitlePlaceholder()"
+                        aria-required="true">
+                        <option value="">-- اختر نوع المجموعة --</option>
+                        <option value="telegram">تليجرام</option>
+                        <option value="whatsapp">واتساب</option>
+                        <option value="other">مجموعة روابط أخرى</option>
+                    </select>
+                </div>
+
+                <div id="linksContainer">
+                    <div class="link-row">
+                        <input type="text" name="linkTitles[]" placeholder="عنوان الرابط" aria-label="عنوان الرابط"
+                            aria-required="true">
+                        <input type="url" name="linkUrls[]" placeholder="الرابط (مثال: https://example.com)"
+                            aria-label="رابط" aria-required="true">
+                        <button type="button" class="remove-link" onclick="removeLink(this)"
+                            aria-label="إزالة هذا الرابط">إزالة</button>
+                    </div>
+                </div>
+
+                <button type="button" class="add-link" onclick="addLink()">+ إضافة رابط آخر</button>
+            </div>
+
+            <div class="content-type-section" id="youtubeSection">
+                <h3>فيديو يوتيوب</h3>
+                <div class="form-group">
+                    <label for="youtubeUrl">رابط يوتيوب</label>
+                    <input type="url" id="youtubeUrl" name="youtubeUrl"
+                        placeholder="مثال: https://www.youtube.com/watch?v=VIDEO_ID" aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="videoTitle">عنوان الفيديو</label>
+                    <input type="text" id="videoTitle" name="videoTitle" placeholder="مثال: مقدمة إلى CSS"
+                        aria-required="true">
+                </div>
+            </div>
+
+            <div class="content-type-section" id="fileSection">
+                <h3>رفع ملف</h3>
+                <div class="form-group">
+                    <label for="fileTitle">عنوان الملف</label>
+                    <input type="text" id="fileTitle" name="fileTitle" placeholder="مثال: ملاحظات المحاضرة - الأسبوع 1"
+                        aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="fileType">نوع الملف</label>
+                    <input type="text" id="fileType" name="fileType" placeholder="شريحة, كتاب ..الخ"
+                        aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="courseFileWrapper">الملف</label>
+                    <div class="file-upload" id="courseFileWrapper">
+                        <label for="courseFile">
+                            <span id="fileUploadText">اسحب وأفلت ملفك هنا أو انقر للتصفح</span>
+                            <input type="file" id="courseFile" name="courseFile"
+                                accept=".pdf,.doc,.docx,.ppt,.pptx,.zip,.jpg,.png" aria-required="true">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-type-section" id="textSection">
+                <h3>محتوى نصي</h3>
+                <div class="form-group">
+                    <label for="textTitle">العنوان</label>
+                    <input type="text" id="textTitle" name="textTitle" placeholder="مثال: مفاهيم هامة"
+                        aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="textContent">المحتوى</label>
+                    <textarea id="textContent" name="textContent" placeholder="أدخل محتواك النصي المفصل هنا..."
+                        aria-required="true"></textarea>
+                </div>
+            </div>
+
+            <button type="submit">حفظ المحتوى</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentTypeSelect = document.getElementById('contentType');
+            const form = document.getElementById('courseEditForm');
+            const linksContainer = document.getElementById('linksContainer');
+            const courseFileInput = document.getElementById('courseFile');
+            const fileUploadTextSpan = document.getElementById('fileUploadText');
+
+            // Initial display based on default selection (if any) or no selection
+            handleContentTypeChange();
+
+            // Event listener for content type change
+            contentTypeSelect.addEventListener('change', handleContentTypeChange);
+
+            // Event listener for form submission
+            form.addEventListener('submit', handleFormSubmission);
+
+            // Event listener for file input change
+            courseFileInput.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    fileUploadTextSpan.textContent = this.files[0].name;
+                } else {
+                    fileUploadTextSpan.textContent = 'اسحب وأفلت ملفك هنا أو انقر للتصفح';
+                }
+            });
+
+
+            // Function to handle content type visibility and required attributes
+            function handleContentTypeChange() {
+                const selectedType = contentTypeSelect.value;
+                const sections = document.querySelectorAll('.content-type-section');
+
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    // Reset required attributes for hidden sections
+                    section.querySelectorAll('[required]').forEach(input => {
+                        input.removeAttribute('required');
+                        input.removeAttribute('aria-required');
+                    });
+                });
+
+                let activeSection;
+                switch (selectedType) {
+                    case 'link-group':
+                        activeSection = document.getElementById('linkGroupSection');
+                        break;
+                    case 'youtube-link':
+                        activeSection = document.getElementById('youtubeSection');
+                        break;
+                    case 'file':
+                        activeSection = document.getElementById('fileSection');
+                        // Reset file input display when section becomes active/inactive
+                        fileUploadTextSpan.textContent = 'اسحب وأفلت ملفك هنا أو انقر للتصفح';
+                        courseFileInput.value = ''; // Clear selected file
+                        break;
+                    case 'text':
+                        activeSection = document.getElementById('textSection');
+                        break;
+                    default:
+                        // No section active
+                        break;
+                }
+
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    // Set required attributes for inputs within the active section
+                    activeSection.querySelectorAll('[placeholder][name]').forEach(input => {
+                        input.setAttribute('required', 'true');
+                        input.setAttribute('aria-required', 'true');
+                    });
+                    // Special handling for file input which is hidden
+                    if (selectedType === 'file') {
+                        document.getElementById('courseFile').setAttribute('required', 'true');
+                        document.getElementById('courseFile').setAttribute('aria-required', 'true');
+                    }
+                }
+            }
+
+            // Function to add a new link row
+            window.addLink = function () {
+                const newRow = document.createElement('div');
+                newRow.className = 'link-row';
+                newRow.innerHTML = `
+                    <input type="text" name="linkTitles[]" placeholder="عنوان الرابط" aria-label="عنوان الرابط" required>
+                    <input type="url" name="linkUrls[]" placeholder="الرابط (مثال: https://example.com)" aria-label="رابط" required>
+                    <button type="button" class="remove-link" onclick="removeLink(this)" aria-label="إزالة هذا الرابط">إزالة</button>
+                `;
+                linksContainer.appendChild(newRow);
+            };
+
+            // Function to remove a link row
+            window.removeLink = function (button) {
+                if (linksContainer.children.length > 1) {
+                    button.closest('.link-row').remove();
+                } else {
+                    alert("يجب أن تحتوي مجموعة الروابط على رابط واحد على الأقل.");
+                }
+            };
+
+            // Function to handle form submission and custom validation
+            function handleFormSubmission(event) {
+                const selectedType = contentTypeSelect.value;
+
+                if (!selectedType) {
+                    event.preventDefault();
+                    alert('الرجاء اختيار نوع المحتوى قبل الحفظ.');
+                    return;
+                }
+
+                // Client-side validation for link group (in addition to HTML5 'required')
+                if (selectedType === 'link-group') {
+                    const linkTitles = document.querySelectorAll('#linkGroupSection input[name="linkTitles[]"]');
+                    const linkUrls = document.querySelectorAll('#linkGroupSection input[name="linkUrls[]"]');
+
+                    for (let i = 0; i < linkTitles.length; i++) {
+                        if (!linkTitles[i].value.trim() || !linkUrls[i].value.trim()) {
+                            event.preventDefault();
+                            alert('يرجى التأكد من ملء جميع عناوين الروابط وروابط URL لمجموعة الروابط.');
+                            return;
+                        }
+                    }
+                }
+
+                // Add more specific validations here if needed (e.g., YouTube URL format, file size/type)
+                // For YouTube URL:
+                if (selectedType === 'youtube-link') {
+                    const youtubeUrlInput = document.getElementById('youtubeUrl');
+                    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/|)([\w-]{11})(.*)?$/;
+                    if (!youtubeRegex.test(youtubeUrlInput.value)) {
+                        event.preventDefault();
+                        alert('الرجاء إدخال رابط يوتيوب صالح.');
+                        youtubeUrlInput.focus();
+                        return;
+                    }
+                }
+
+                // For File Upload:
+                if (selectedType === 'file') {
+                    const courseFileInput = document.getElementById('courseFile');
+                    if (courseFileInput.files.length === 0) {
+                        event.preventDefault();
+                        alert('الرجاء اختيار ملف للتحميل.');
+                        return;
+                    }
+                    // Optional: Add file type/size validation here
+                    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/zip', 'image/jpeg', 'image/png'];
+                    const maxFileSize = 10 * 1024 * 1024; // 10 MB
+
+                    const file = courseFileInput.files[0];
+                    if (!allowedTypes.includes(file.type)) {
+                        event.preventDefault();
+                        alert('نوع الملف غير صالح. الأنواع المسموح بها: PDF, Word, PowerPoint, Zip, JPG, PNG.');
+                        return;
+                    }
+                    if (file.size > maxFileSize) {
+                        event.preventDefault();
+                        alert('حجم الملف يتجاوز الحد الأقصى المسموح به 10 ميجابايت.');
+                        return;
+                    }
+                }
+
+                // If all client-side checks pass, the form will submit normally.
+                // Server-side validation is CRUCIAL for security and data integrity.
+            }
+        });
+    </script>
+</body>
+
+</html>
