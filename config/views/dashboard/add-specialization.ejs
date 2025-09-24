@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة تخصص جديد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            direction: rtl;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        #message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        #message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>إضافة تخصص جديد</h2>
+        <form id="addSpecializationForm">
+            <div class="form-group">
+                <label for="specializationName">اسم التخصص:</label>
+                <input type="text" id="specializationName" name="name" required placeholder="أدخل اسم التخصص هنا">
+            </div>
+            <div class="form-group">
+                <label for="collegeSelect">الكلية التابع لها:</label>
+                <select id="collegeSelect" name="collegeId" required>
+                    <option value="">-- اختر الكلية --</option>
+                </select>
+            </div>
+            <button type="submit">إضافة التخصص</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const addSpecializationForm = document.getElementById('addSpecializationForm');
+            const specializationNameInput = document.getElementById('specializationName');
+            const collegeSelect = document.getElementById('collegeSelect');
+            const messageDiv = document.getElementById('message');
+
+            // Function to display messages
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.className = type;
+                messageDiv.style.display = 'block';
+            }
+
+            // Load colleges for the dropdown
+            async function loadColleges() {
+                try {
+                    const response = await fetch('/colleges'); // Endpoint to get all colleges
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch colleges');
+                    }
+                    const colleges = await response.json();
+
+                    // Clear existing options except the default
+                    collegeSelect.innerHTML = '<option value="">-- اختر الكلية --</option>';
+
+                    colleges.forEach(college => {
+                        const option = document.createElement('option');
+                        option.value = college._id; // Store college ID
+                        option.textContent = college.name;
+                        collegeSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Error loading colleges:', error);
+                    showMessage('فشل في تحميل الكليات. يرجى تحديث الصفحة.', 'error');
+                }
+            }
+
+            // Call loadColleges on page load
+            loadColleges();
+
+            // Handle form submission
+            addSpecializationForm.addEventListener('submit', async function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                messageDiv.style.display = 'none'; // Hide previous message
+                messageDiv.className = '';
+
+                const specializationName = specializationNameInput.value.trim();
+                const collegeId = collegeSelect.value; // Get selected college ID
+
+                if (!specializationName) {
+                    showMessage('الرجاء إدخال اسم التخصص.', 'error');
+                    return;
+                }
+                if (!collegeId) {
+                    showMessage('الرجاء اختيار الكلية التابع لها التخصص.', 'error');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/specializations', { // Endpoint to add specialization
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name: specializationName, collegeId: collegeId })
+                    });
+
+                    const responseData = await response.json();
+
+                    if (response.ok) {
+                        showMessage(responseData.message || 'تمت إضافة التخصص بنجاح.', 'success');
+                        addSpecializationForm.reset(); // Clear form fields
+                        await loadColleges(); // Reload colleges in case of multiple adds
+                    } else {
+                        showMessage(responseData.message || responseData.error || 'فشل إضافة التخصص.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    showMessage('حدث خطأ في الاتصال بالخادم. يرجى المحاولة مرة أخرى.', 'error');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
